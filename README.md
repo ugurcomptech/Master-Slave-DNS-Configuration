@@ -105,6 +105,11 @@ ufw allow 53/udp
 ufw allow bınd9
 ufw reload
 ```
+```
+sudo firewall-cmd --add-port=53/udp --permanent
+sudo firewall-cmd --add-service=dns --permanent
+sudo firewall-cmd --reload
+```
 
 **NOT 2:** Eğer `zone` dosyalarınızı slave sunucunuzda yedeklemek istiyor iseniz aşağıdaki komutu çalıştırabilirsiniz. İsterseniz bunu crontaba bunu ekleyebilirsiniz.
 
