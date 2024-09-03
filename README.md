@@ -141,7 +141,13 @@ echo "Senkronizasyon ve güncellemeler tamamlandı."
 ```
 
 
+**NOT 3:** NameServer değişikliğinin tüm dünyada yayımlanması 24-48 saat arası sürebilmektedir. www.whatsmydns.net web site adresinden kontrol sağlayabilirsiniz.
 
+
+
+----------------------------------------------------
+
+Okuduğunuz için teşekkürler.
 
 
 
