@@ -98,9 +98,42 @@ Bu şekilde BIND-DNS ile senkron çalışan bir DNS yapısı kurabilirsiniz. Bu 
 
 ## ÖNEMLİ NOTLAR
 
-<span style="color: red;">NOT:</span>
+**NOT 1:** Dışarıdan eğer DNS servisinize erişemez iseniz yüksek ihtimalle UFW veya FİREWALLD üzerinden **53/udp** portuna veya **BIND9** servisine izin vermediğinizden dolayıdır.
 
+```
+ufw allow 53/udp
+ufw allow bınd9
+ufw reload
+```
 
+**NOT 2:** Eğer `zone` dosyalarınızı slave sunucunuzda yedeklemek istiyor iseniz aşağıdaki komutu çalıştırabilirsiniz. İsterseniz bunu crontaba bunu ekleyebilirsiniz.
+
+```
+0 * * * * /etc/bind/serial.sh
+```
+
+```
+#!/bin/bash
+
+# Variables
+MASTER_ZONE_PATH="/etc/bind/zones/domain.com.db"
+SLAVE_SERVER="ubuntu@1.1.1.1"
+SLAVE_ZONE_PATH="/var/cache/bind/domain.com.db"
+RSYNC_KEY_PATH="/root/private.key"
+
+# Update the serial number in the zone file
+echo "Güncellemeler yapılacak olan dosyayı bulup güncelliyoruz..."
+
+# Copy the zone file to the slave server
+echo "Zone dosyasını slave sunucuya kopyalıyoruz..."
+rsync -avz -e "ssh -i $RSYNC_KEY_PATH" --delete $MASTER_ZONE_PATH $SLAVE_SERVER:$SLAVE_ZONE_PATH
+
+# Restart the BIND service
+echo "Bind servisini yeniden başlatıyoruz..."
+sudo systemctl restart named.service
+
+echo "Senkronizasyon ve güncellemeler tamamlandı."
+```
 
 
 
