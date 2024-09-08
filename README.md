@@ -59,6 +59,9 @@ mail    IN  A       1.1.1.1
 @       IN  NS      dns1.domain.com.
 @       IN  NS      dns2.domain.com.
 
+dns1  IN A 2.2.2.2
+dns2  IN A 2.2.2.3
+
 ```
 
 ### BIND'i Yeniden Başlatma
