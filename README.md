@@ -74,7 +74,7 @@ sudo systemctl restart bind9
 ### Zone Dosyasını Tanımlama
 
 
-**/etc/bind/named.conf.local** dosyasına aşağıdaki zon tanımını ekleyin:
+**/etc/bind/named.conf.local** dosyasına aşağıdaki zone tanımını ekleyin:
 
 ```
 zone "example.com" {
