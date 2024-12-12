@@ -16,7 +16,7 @@ sudo apt-get install build-essential libssl-dev libgeoip-dev
 
 ## Primary DNS Server Yapılandırması
 
-**/etc/bind/named.conf.local** dosyasına yeni bir zonu tanımlayalım:
+**/etc/bind/named.conf.local** dosyasına yeni bir zone tanımlayalım:
 
 ```
 zone "example.com" {
